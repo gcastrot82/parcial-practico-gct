@@ -81,4 +81,42 @@ describe('ProductoService', () => {
     expect(storedProducto.precio).toEqual(newProducto.precio);
     expect(storedProducto.tipo).toEqual(newProducto.tipo);
   });
+
+  it('update should modify a producto', async () => {
+    const producto: ProductoEntity = productoList[0];
+    producto.nombre = faker.company.name();
+    producto.precio = faker.number.int();
+    const updatedProducto: ProductoEntity = await service.update(
+      producto.id,
+      producto,
+    );
+    expect(updatedProducto).not.toBeNull();
+    const storedMuseum: ProductoEntity = await repository.findOne({
+      where: { id: producto.id },
+    });
+    expect(storedMuseum).not.toBeNull();
+    expect(storedMuseum.nombre).toEqual(producto.nombre);
+    expect(storedMuseum.precio).toEqual(producto.precio);
+  });
+  it('update should throw an exception for an invalid producto', async () => {
+    let producto: ProductoEntity = productoList[0];
+    producto = {
+      ...producto,
+      nombre: 'New name',
+      precio: -500,
+    };
+    await expect(() => service.update('0', producto)).rejects.toHaveProperty(
+      'message',
+      'The producto with the given id was not found',
+    );
+  });
+
+  it('delete should remove a museum', async () => {
+    const producto: ProductoEntity = productoList[0];
+    await service.delete(producto.id);
+    const deletedProducto: ProductoEntity = await repository.findOne({
+      where: { id: producto.id },
+    });
+    expect(deletedProducto).toBeNull();
+  });
 });
