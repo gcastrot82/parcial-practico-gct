@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# parcial-practico-gct
+
 Parcial practico Desarrollo API - Nest 2023 
 =======
 <p align="center">
