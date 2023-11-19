@@ -107,16 +107,22 @@ describe('ProductoService', () => {
     };
     await expect(() => service.update('0', producto)).rejects.toHaveProperty(
       'message',
-      'The producto with the given id was not found',
+      'El producto ingresado no fue encontrado',
     );
   });
 
-  it('delete should remove a museum', async () => {
+  it('delete should remove a producto', async () => {
     const producto: ProductoEntity = productoList[0];
     await service.delete(producto.id);
     const deletedProducto: ProductoEntity = await repository.findOne({
       where: { id: producto.id },
     });
     expect(deletedProducto).toBeNull();
+  });
+  it('delete should throw an exception for an invalid producto', async () => {
+    await expect(() => service.delete('0')).rejects.toHaveProperty(
+      'message',
+      'El producto ingresado no fue encontrado',
+    );
   });
 });
