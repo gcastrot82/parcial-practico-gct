@@ -1,5 +1,6 @@
-import { PrimaryGeneratedColumn, Column } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { Tipo } from './tipo.enum';
+import { TiendaEntity } from 'src/tienda/tienda.entity';
 
 export class ProductoEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -16,4 +17,8 @@ export class ProductoEntity {
     enum: Tipo,
   })
   tipo: Tipo;
+
+  @ManyToMany(() => TiendaEntity, (tienda) => tienda.productos)
+  @JoinTable()
+  tiendas: TiendaEntity[];
 }
