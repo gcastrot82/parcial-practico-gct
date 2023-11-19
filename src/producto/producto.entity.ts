@@ -5,8 +5,7 @@ import {
   JoinTable,
   Entity,
 } from 'typeorm';
-import { Tipo } from './tipo.enum';
-import { TiendaEntity } from 'src/tienda/tienda.entity';
+import { TiendaEntity } from '../tienda/tienda.entity';
 
 @Entity()
 export class ProductoEntity {
@@ -19,11 +18,12 @@ export class ProductoEntity {
   @Column()
   precio: number;
 
-  @Column({
-    type: 'enum',
-    enum: Tipo,
-  })
-  tipo: Tipo;
+  // @Column({
+  //   type: 'enum',
+  //   enum: Tipo,
+  // })
+  @Column()
+  tipo: string;
 
   @ManyToMany(() => TiendaEntity, (tienda) => tienda.productos)
   @JoinTable()

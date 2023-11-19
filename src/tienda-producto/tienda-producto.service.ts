@@ -132,7 +132,10 @@ export class TiendaProductoService {
         BusinessError.NOT_FOUND,
       );
 
-    const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}, relations: ["tiendas"]});
+    const producto: ProductoEntity = await this.productoRepository.findOne({
+      where: { id: productoId },
+      relations: ['tiendas'],
+    });
     if (!producto)
       throw new BusinessLogicException(
         'La tienda no tiene producto asociado',

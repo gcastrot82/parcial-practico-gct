@@ -9,10 +9,10 @@ import {
   Put,
   UseInterceptors,
 } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { TiendaProductoService } from './tienda-producto.service';
-import { TiendaDto } from 'src/tienda/tienda.dto';
-import { TiendaEntity } from 'src/tienda/tienda.entity';
+import { TiendaDto } from '../tienda/tienda.dto';
+import { TiendaEntity } from '../tienda/tienda.entity';
 import { plainToInstance } from 'class-transformer';
 
 @Controller('products')

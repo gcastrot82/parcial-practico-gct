@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import {
   BusinessLogicException,
   BusinessError,
-} from 'src/shared/errors/business-errors';
+} from '../shared/errors/business-errors';
 
 @Injectable()
 export class TiendaService {
