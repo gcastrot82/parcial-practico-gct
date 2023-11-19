@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, Length } from 'class-validator';
 
 export class TiendaDto {
   @IsString()
@@ -7,6 +7,7 @@ export class TiendaDto {
 
   @IsString()
   @IsNotEmpty()
+  @Length(3, 3, { message: 'La ciudad debe tener tres caracteres.' })
   readonly ciudad: string;
 
   @IsString()
