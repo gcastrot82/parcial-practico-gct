@@ -20,7 +20,7 @@ export class ProductoService {
   async findOne(id: string): Promise<ProductoEntity> {
     const producto: ProductoEntity = await this.productoRepository.findOne({
       where: { id },
-      relations: ['productos'],
+      // relations: ['producto'],
     });
     if (!producto)
       throw new BusinessLogicException(

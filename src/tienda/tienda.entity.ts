@@ -1,6 +1,13 @@
 import { ProductoEntity } from 'src/producto/producto.entity';
-import { PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+  Entity,
+} from 'typeorm';
 
+@Entity()
 export class TiendaEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

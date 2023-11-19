@@ -12,9 +12,10 @@ import { TiendaProductoModule } from './tienda-producto/tienda-producto.module';
   imports: [
     ProductoModule,
     TiendaModule,
+    TiendaProductoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: '192.168.1.100',
       port: 5432,
       username: 'postgres',
       password: 'postgres',
@@ -24,7 +25,6 @@ import { TiendaProductoModule } from './tienda-producto/tienda-producto.module';
       synchronize: true,
       keepConnectionAlive: true,
     }),
-    TiendaProductoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

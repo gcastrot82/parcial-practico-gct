@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
 
 export class ProductoDto {
   @IsString()
   @IsNotEmpty()
   readonly nombre: string;
 
-  @IsString()
   @IsNotEmpty()
+  @IsNumber()
+  @IsPositive()
   readonly precio: number;
 
-  @IsString()
   @IsNotEmpty()
-  readonly string: [];
+  readonly tipo: string;
 }
